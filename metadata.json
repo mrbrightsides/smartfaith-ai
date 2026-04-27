@@ -1,0 +1,13 @@
+{
+  "name": "SmartFaith AI",
+  "description": "Your AI-Powered Daily Islamic Assistant featuring specialized chatbots, prayer times, Quran, and spiritual tools.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "AI Chatbots",
+    "Prayer Times",
+    "Interactive Quran",
+    "Islamic Tools"
+  ]
+}

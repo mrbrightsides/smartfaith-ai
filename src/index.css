@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "leaflet/dist/leaflet.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", serif;
+  
+  --color-islamic-green: #064e3b;
+  --color-islamic-gold: #d4af37;
+  --color-islamic-cream: #f5f2ed;
+}
+
+@layer base {
+  body {
+    @apply bg-islamic-cream text-slate-900 font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.nav-item-active {
+  @apply text-islamic-green font-semibold;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-islamic-green/20 rounded-full hover:bg-islamic-green/40 transition-colors;
+}
