@@ -1,3 +1,6 @@
+import { GoogleGenAI } from "@google/genai";
+
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY as string });
 
 export type PersonaType = 'Fiqh' | 'Sirah' | 'Tarikh' | 'Nusantara' | 'Muamalah' | 'GenZ' | 'Muallaf' | 'General';
 
@@ -14,26 +17,22 @@ const PERSONA_INSTRUCTIONS: Record<PersonaType, string> = {
 
 export async function chatWithPersona(persona: PersonaType, message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[] = []) {
   try {
-    const response = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        persona,
-        message,
-        history,
-        personaInstructions: PERSONA_INSTRUCTIONS[persona]
-      })
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: [
+        ...history,
+        { role: 'user', parts: [{ text: message }] }
+      ],
+      config: {
+        systemInstruction: PERSONA_INSTRUCTIONS[persona],
+        temperature: 0.7,
+      }
     });
 
-    if (!response.ok) {
-      throw new Error('Server returned an error');
-    }
-
-    const data = await response.json();
-    return data.text;
+    return response.text;
   } catch (error) {
-    console.error("Chat API Error:", error);
-    return "Maaf, terjadi gangguan saat menghubungi asisten AI (Gemini & OpenAI). Silakan coba lagi nanti.";
+    console.error("Gemini API Error:", error);
+    return "Maaf, terjadi gangguan saat menghubungi asisten AI. Silakan coba lagi nanti.";
   }
 }
 
@@ -78,18 +77,16 @@ Tambahan Khusus: ${tambahan || '-'}
 `;
 
   try {
-    const response = await fetch('/api/generate-khutbah', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prompt,
-        systemInstruction: "You are KhutbahGPT, an imam assistant that writes concise, responsible khutbah texts in Indonesian for Muslim audiences. Keep it respectful, apolitical, and practical."
-      })
+    const response = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      config: {
+        systemInstruction: "You are KhutbahGPT, an imam assistant that writes concise, responsible khutbah texts in Indonesian for Muslim audiences. Keep it respectful, apolitical, and practical.",
+        temperature: 0.7,
+      }
     });
 
-    if (!response.ok) throw new Error('API Error');
-    const data = await response.json();
-    return data.text;
+    return response.text;
   } catch (error) {
     console.error("Khutbah Generation Error:", error);
     throw error;
@@ -98,19 +95,33 @@ Tambahan Khusus: ${tambahan || '-'}
 
 export async function analyzeHafalan(audioBase64: string, surah: string, range: string) {
   try {
-    const response = await fetch('/api/analyze-hafalan', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        audioBase64,
-        prompt: `Simulasi Setoran Hafalan Al-Quran. Surah: ${surah}, Range Ayat: ${range}. Tolong transkripsi audio ini ke dalam teks Arab dan berikan sedikit masukan/evaluasi singkat mengenai akurasi bacaan berdasarkan teks mushaf tersebut.`,
-        systemInstruction: "You are a Tahfidz Assistant. Help students by transcribing their recitation and giving helpful, respectful feedback on their Quranic reading accuracy."
-      })
+    const response = await ai.models.generateContent({
+      model: "gemini-1.5-flash", // Use 1.5 flash for audio processing if available, or just flash
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            { text: `Simulasi Setoran Hafalan Al-Quran.
+Surah: ${surah}
+Range Ayat: ${range}
+
+Tolong transkripsi audio ini ke dalam teks Arab dan berikan sedikit masukan/evaluasi singkat mengenai akurasi bacaan berdasarkan teks mushaf tersebut.` },
+            {
+              inlineData: {
+                mimeType: "audio/mp3", // We'll try to normalize to mp3 or whatever the browser gives
+                data: audioBase64
+              }
+            }
+          ]
+        }
+      ],
+      config: {
+        systemInstruction: "You are a Tahfidz Assistant. Help students by transcribing their recitation and giving helpful, respectful feedback on their Quranic reading accuracy.",
+        temperature: 0.4,
+      }
     });
 
-    if (!response.ok) throw new Error('API Error');
-    const data = await response.json();
-    return data.text;
+    return response.text;
   } catch (error) {
     console.error("Hafalan Analysis Error:", error);
     throw error;
