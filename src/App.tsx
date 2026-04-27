@@ -203,7 +203,7 @@ export default function App() {
           <div className="flex-1 flex justify-center lg:justify-end gap-6 text-sm overflow-x-auto px-4 whitespace-nowrap">
             <div className="flex items-center gap-2 text-islamic-green font-medium">
               <BookOpen className="w-4 h-4" />
-              <span>{t.appName} Showcase • {t.tagline}</span>
+              <span>{t.appName} AI • {t.tagline}</span>
             </div>
           </div>
         </header>
@@ -3146,7 +3146,7 @@ function SettingsView({ lang }: { lang: Language, key?: string }) {
 
   const labels = lang === 'id' ? {
     sub: "Konfigurasi aplikasi dan informasi fitur SmartFaith.",
-    eco: "SmartFaith Ecosystem",
+    eco: "SmartFaith AI Ecosystem",
     ecoSub: "Platform digital Islami terpadu yang dirancang untuk mendukung gaya hidup muslim modern dengan bantuan kecerdasan buatan dan data realtime.",
     ver: "Versi Aplikasi",
     method: "Metode Hisab",
@@ -3159,7 +3159,7 @@ function SettingsView({ lang }: { lang: Language, key?: string }) {
     iotSub: "Sinkronkan jadwal ke display eksternal",
   } : {
     sub: "App configuration and SmartFaith feature information.",
-    eco: "SmartFaith Ecosystem",
+    eco: "SmartFaith AI Ecosystem",
     ecoSub: "Integrated Islamic digital platform designed to support modern Muslim lifestyles with AI assistance and realtime data.",
     ver: "Application Version",
     method: "Calculation Method",
