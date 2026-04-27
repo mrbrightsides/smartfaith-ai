@@ -575,20 +575,19 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="max-w-4xl mx-auto h-[calc(100vh-140px)] flex flex-col gap-6"
+      className="max-w-4xl mx-auto h-[calc(100dvh-100px)] md:h-[calc(100vh-140px)] flex flex-col gap-2 md:gap-6"
     >
-      <div className="space-y-3 shrink-0">
+      <div className="space-y-1 md:space-y-3 shrink-0">
         <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-xl md:text-2xl font-bold text-islamic-green flex items-center gap-2">
+          <div className="px-1">
+            <h2 className="text-base md:text-2xl font-bold text-islamic-green flex items-center gap-2">
               🤖 {t.welcomeTitle}
             </h2>
-            <p className="text-xs text-slate-500 hidden sm:block">{t.welcomeDesc}</p>
           </div>
         </div>
 
         {/* Persona Selection - Horizontal Scroll on Mobile */}
-        <div className="flex overflow-x-auto pb-2 gap-2 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-4">
+        <div className="flex overflow-x-auto pb-1 md:pb-2 gap-1.5 md:gap-2 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-4 whitespace-nowrap">
           {personaSpecs.map(p => (
             <button
               key={p.id}
@@ -598,10 +597,10 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
                 setMessages([{ role: 'assistant', text: welcome }]);
               }}
               className={`
-                whitespace-nowrap px-4 md:px-3 py-2 rounded-xl text-xs font-semibold transition-all border shrink-0
+                px-3 md:px-3 py-1.5 md:py-2 rounded-lg md:rounded-xl text-[10px] md:text-xs font-semibold transition-all border shrink-0
                 ${selectedPersona === p.id 
-                  ? 'bg-islamic-green text-white border-islamic-green shadow-md scale-[1.02]' 
-                  : 'bg-white text-slate-600 border-slate-200 hover:border-islamic-green/30'}
+                  ? 'bg-islamic-green text-white border-islamic-green shadow-sm scale-[1.02]' 
+                  : 'bg-white text-slate-600 border-slate-200'}
               `}
             >
               {p.label}
@@ -613,21 +612,21 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
-            className="p-2 bg-islamic-gold/10 border-l-4 border-islamic-gold rounded-r-lg"
+            className="p-1.5 md:p-2 bg-islamic-gold/10 border-l-2 md:border-l-4 border-islamic-gold rounded-r-lg"
           >
-            <p className="text-[10px] md:text-xs text-islamic-green leading-tight">
-              <span className="font-bold">{lang === 'id' ? 'Chat aktif' : 'Active chat'}: {activeSpec.label}</span> — {activeSpec.desc}
+            <p className="text-[9px] md:text-xs text-islamic-green leading-tight">
+              <span className="font-bold">{activeSpec.label}</span> — {activeSpec.desc}
             </p>
           </motion.div>
         )}
       </div>
 
       {/* Messages */}
-      <div className="flex-1 glass-panel rounded-3xl p-4 lg:p-6 overflow-y-auto space-y-6 flex flex-col">
+      <div className="flex-1 glass-panel rounded-xl md:rounded-3xl p-2 md:p-6 overflow-y-auto space-y-3 md:space-y-6 flex flex-col">
         {messages.map((m, i) => (
           <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div className={`
-              max-w-[85%] px-5 py-3 rounded-2xl text-sm lg:text-base leading-relaxed shadow-sm
+              max-w-[92%] md:max-w-[85%] px-3 md:px-5 py-2 md:py-3 rounded-xl md:rounded-2xl text-sm md:text-base leading-relaxed shadow-sm
               ${m.role === 'user' 
                 ? 'bg-islamic-green text-white rounded-tr-none' 
                 : 'bg-white text-slate-800 rounded-tl-none border border-slate-100'}
@@ -647,7 +646,7 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
       </div>
 
       {/* Input */}
-      <div className="flex gap-4 items-end pb-4">
+      <div className="flex gap-2 md:gap-4 items-end pb-2 md:pb-4">
         <div className="flex-1 relative group">
           <textarea
             rows={1}
@@ -660,14 +659,14 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
               }
             }}
             placeholder={t.placeholder}
-            className="w-full bg-white rounded-2xl px-6 py-4 pr-16 shadow-xl border-2 border-transparent focus:border-islamic-green focus:ring-0 resize-none text-slate-800 transition-all"
+            className="w-full bg-white rounded-xl md:rounded-2xl px-4 md:px-6 py-3 md:py-4 pr-12 md:pr-16 shadow-lg border-2 border-transparent focus:border-islamic-green focus:ring-0 resize-none text-slate-800 transition-all text-sm md:text-base"
           />
           <button 
             onClick={handleSend}
             disabled={isLoading || !input.trim()}
-            className="absolute right-4 bottom-3 p-2.5 rounded-xl bg-islamic-green text-white disabled:opacity-50 transition-all hover:bg-slate-800 active:scale-95 shadow-md"
+            className="absolute right-2 md:right-4 bottom-2 md:bottom-3 p-2 md:p-2.5 rounded-lg md:rounded-xl bg-islamic-green text-white disabled:opacity-50 transition-all hover:bg-slate-800 active:scale-95 shadow-md"
           >
-            <Send className="w-5 h-5" />
+            <Send className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
       </div>
