@@ -577,16 +577,18 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
       animate={{ opacity: 1, y: 0 }}
       className="max-w-4xl mx-auto h-[calc(100vh-140px)] flex flex-col gap-6"
     >
-      <div className="space-y-4">
-        <div>
-          <h2 className="text-2xl font-bold text-islamic-green flex items-center gap-2">
-            🤖 {t.welcomeTitle}
-          </h2>
-          <p className="text-sm text-slate-500">{t.welcomeDesc}</p>
+      <div className="space-y-3 shrink-0">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl md:text-2xl font-bold text-islamic-green flex items-center gap-2">
+              🤖 {t.welcomeTitle}
+            </h2>
+            <p className="text-xs text-slate-500 hidden sm:block">{t.welcomeDesc}</p>
+          </div>
         </div>
 
-        {/* Persona Selection GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+        {/* Persona Selection - Horizontal Scroll on Mobile */}
+        <div className="flex overflow-x-auto pb-2 gap-2 scrollbar-none -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-4">
           {personaSpecs.map(p => (
             <button
               key={p.id}
@@ -596,9 +598,9 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
                 setMessages([{ role: 'assistant', text: welcome }]);
               }}
               className={`
-                px-3 py-2 rounded-xl text-xs font-semibold transition-all border
+                whitespace-nowrap px-4 md:px-3 py-2 rounded-xl text-xs font-semibold transition-all border shrink-0
                 ${selectedPersona === p.id 
-                  ? 'bg-islamic-green text-white border-islamic-green shadow-lg scale-[1.02]' 
+                  ? 'bg-islamic-green text-white border-islamic-green shadow-md scale-[1.02]' 
                   : 'bg-white text-slate-600 border-slate-200 hover:border-islamic-green/30'}
               `}
             >
@@ -611,9 +613,9 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }}
-            className="p-3 bg-islamic-gold/10 border-l-4 border-islamic-gold rounded-r-xl"
+            className="p-2 bg-islamic-gold/10 border-l-4 border-islamic-gold rounded-r-lg"
           >
-            <p className="text-xs text-islamic-green font-medium">
+            <p className="text-[10px] md:text-xs text-islamic-green leading-tight">
               <span className="font-bold">{lang === 'id' ? 'Chat aktif' : 'Active chat'}: {activeSpec.label}</span> — {activeSpec.desc}
             </p>
           </motion.div>

@@ -18,7 +18,7 @@ const PERSONA_INSTRUCTIONS: Record<PersonaType, string> = {
 export async function chatWithPersona(persona: PersonaType, message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[] = []) {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.1-pro-preview",
       contents: [
         ...history,
         { role: 'user', parts: [{ text: message }] }
@@ -78,7 +78,7 @@ Tambahan Khusus: ${tambahan || '-'}
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
+      model: "gemini-3.1-pro-preview",
       contents: [{ role: 'user', parts: [{ text: prompt }] }],
       config: {
         systemInstruction: "You are KhutbahGPT, an imam assistant that writes concise, responsible khutbah texts in Indonesian for Muslim audiences. Keep it respectful, apolitical, and practical.",
@@ -96,7 +96,7 @@ Tambahan Khusus: ${tambahan || '-'}
 export async function analyzeHafalan(audioBase64: string, surah: string, range: string) {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-1.5-flash", // Use 1.5 flash for audio processing if available, or just flash
+      model: "gemini-3.1-pro-preview",
       contents: [
         {
           role: 'user',
