@@ -1,6 +1,6 @@
 # 🕌 SmartFaith AI - Your Modern Digital Muslim Companion
 
-![Main Banner](https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2574&auto=format&fit=crop)
+![Main Banner](https://i.imgur.com/vPQigu6.png)
 
 SmartFaith AI is a progressive web application designed to be a loyal companion for Muslims in the digital age. Combining spiritual depth with the sophistication of Artificial Intelligence (AI), this application offers a complete solution ranging from religious consultation to daily worship management.
 
@@ -58,7 +58,7 @@ If you want to run this application locally:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/username/smartfaith-ai.git
+   git clone https://github.com/mrbrightsides/smartfaith-ai.git
    ```
 
 2. **Install dependencies**
