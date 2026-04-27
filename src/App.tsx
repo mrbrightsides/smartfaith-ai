@@ -532,6 +532,7 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
     { id: 'Muamalah', label: 'MuamalahBot', desc: 'Diskusi ekonomi syariah, zakat, dan etika bisnis.' },
     { id: 'GenZ', label: 'GenZBot', desc: 'Curhat dan diskusi masalah harian dengan gaya anak muda.' },
     { id: 'Muallaf', label: 'MuallafBot', desc: 'Panduan ramah untuk yang baru mengenal dan memeluk Islam.' },
+    { id: 'Kids', label: 'KidsBot', desc: 'Teman belajar agama yang ramah dan ceria untuk anak-anak.' },
   ] : [
     { id: 'Fiqh', label: 'FiqhBot', desc: 'Islamic law, worship, and schools of thought Q&A.' },
     { id: 'Sirah', label: 'SirahBot', desc: "Learn about the life of Prophet Muhammad ﷺ and his companions." },
@@ -540,6 +541,7 @@ function ChatView({ lang }: { lang: Language, key?: string }) {
     { id: 'Muamalah', label: 'MuamalahBot', desc: 'Sharia economy, zakat, and business ethics discussions.' },
     { id: 'GenZ', label: 'GenZBot', desc: 'Chat about daily life with a youthful perspective.' },
     { id: 'Muallaf', label: 'MuallafBot', desc: 'Friendly guidance for those new to and embracing Islam.' },
+    { id: 'Kids', label: 'KidsBot', desc: 'A friendly and cheerful religious learning companion for children.' },
   ];
 
   const getWelcomeMessage = (persona: PersonaType): string => t.getWelcome(persona);
@@ -3121,7 +3123,8 @@ function SettingsView({ lang }: { lang: Language, key?: string }) {
   const [activeSubTab, setActiveSubTab] = useState('about');
   const t = translations[lang].settings;
   const features = lang === 'id' ? [
-    { icon: <MessageSquare className="w-4 h-4" />, title: "Tanya jawab Islami", desc: "Powered by AI (Gemini) untuk konsultasi cepat." },
+    { icon: <MessageSquare className="w-4 h-4" />, title: "Tanya jawab Islami", desc: "Powered by AI (Gemini) untuk konsultasi cepat dengan 8 persona unik termasuk KidsBot." },
+    { icon: <Heart className="w-4 h-4" />, title: "KidsBot & Edukasi", desc: "Konten edukasi Islami ramah anak dengan gaya bahasa yang ceria." },
     { icon: <Clock className="w-4 h-4" />, title: "Jadwal Sholat Realtime", desc: "Lokasi & metode hisab bisa diatur sesuai kebutuhan." },
     { icon: <Timer className="w-4 h-4" />, title: "Pengingat Sholat", desc: "Countdown presisi dengan integrasi Al-Adhan API." },
     { icon: <BookOpen className="w-4 h-4" />, title: "KhutbahGPT", desc: "Generator khutbah singkat berbasis kecerdasan buatan." },
@@ -3132,7 +3135,8 @@ function SettingsView({ lang }: { lang: Language, key?: string }) {
     { icon: <CloudLightning className="w-4 h-4" />, title: "Integrasi IoT", desc: "Siap terhubung ke display masjid dan smart home." },
     { icon: <Tv className="w-4 h-4" />, title: "Live TV Islami", desc: "Akses siaran langsung channel dakwah pilihan." }
   ] : [
-    { icon: <MessageSquare className="w-4 h-4" />, title: "Islamic Q&A", desc: "Powered by AI (Gemini) for quick consultation." },
+    { icon: <MessageSquare className="w-4 h-4" />, title: "Islamic Q&A", desc: "Powered by AI (Gemini) for quick consultation with 8 unique personas including KidsBot." },
+    { icon: <Heart className="w-4 h-4" />, title: "KidsBot & Education", desc: "Child-friendly Islamic educational content with a cheerful tone." },
     { icon: <Clock className="w-4 h-4" />, title: "Realtime Prayer Times", desc: "Configurable location and calculation methods." },
     { icon: <Timer className="w-4 h-4" />, title: "Prayer Reminder", desc: "Precise countdown with Al-Adhan API integration." },
     { icon: <BookOpen className="w-4 h-4" />, title: "KhutbahGPT", desc: "AI-powered short khutbah generator." },

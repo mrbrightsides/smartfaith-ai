@@ -30,6 +30,7 @@ Interactive consultation with 7 specialized AI personas:
 - **MuamalahBot:** Business Ethics & Sharia Economics.
 - **GenZBot:** Contemporary Muslim lifestyle discussions.
 - **MuallafBot:** Basic guidance for new brothers and sisters.
+- **KidsBot:** Fun and friendly religious learning companion for children.
 
 ### 📖 Pro Digital Al-Qur'an
 - Official Kemenag (Ministry of Religious Affairs) mushaf text.

@@ -34,7 +34,8 @@ export const translations = {
           Nusantara: "Assalamu'alaikum, saya NusantaraBot. Mari berdiskusi tentang kekayaan sejarah masuknya Islam di Indonesia, peran para Walisongo, dan indahnya harmoni budaya Islam di tanah air kita yang tercinta. Ada topik spesifik?",
           Muamalah: "Assalamu'alaikum, saya MuamalahBot. Saya di sini untuk membantu Anda memahami etika bisnis syariah, fikih jual beli, investasi halal, hingga cara menghindari riba dalam kehidupan ekonomi modern. Apa kendala finansial Anda?",
           GenZ: "Assalamu'alaikum! Halo, aku GenZBot. Di sini tempatnya curhat dan diskusi asik seputar lifestyle muslim kekinian, self-improvement, hingga gimana caranya tetap istiqomah di tengah gempuran tren dunia. Yuk, mulai ngobrol!",
-          Muallaf: "Assalamu'alaikum, selamat datang di keluarga besar Islam! Saya MuallafBot, sahabat belajar Anda untuk memahami dasar-dasar akidah, cara bersuci, sholat, dan bimbingan awal iman dengan sabar. Jangan ragu bertanya, ya."
+          Muallaf: "Assalamu'alaikum, selamat datang di keluarga besar Islam! Saya MuallafBot, sahabat belajar Anda untuk memahami dasar-dasar akidah, cara bersuci, sholat, dan bimbingan awal iman dengan sabar. Jangan ragu bertanya, ya.",
+          Kids: "Halo adik-adik sayang! Assalamu'alaikum! Aku KidsBot, teman bermain dan belajar agamamu yang seru. 🌈 Yuk tanya apa saja tentang indahnya Islam, cerita Nabi yang hebat, atau cara jadi anak sholeh yang disayang Allah. Aku punya banyak cerita seru loh! ✨"
         };
         return welcomes[persona] || "Assalamu'alaikum! Saya SmartFaith AI, ada yang bisa saya bantu hari ini?";
       }
@@ -87,7 +88,8 @@ export const translations = {
           Nusantara: "Assalamu'alaikum, I am NusantaraBot. Let's discuss the rich history of Islam entering Indonesia, the role of Walisongo, and the beautiful harmony of Islamic culture in our beloved homeland. Any specific topics?",
           Muamalah: "Assalamu'alaikum, I am MuamalahBot. I'm here to help you understand Sharia business ethics, jurisprudence of trade, halal investment, and how to avoid usury in modern economic life. What are your financial concerns?",
           GenZ: "Assalamu'alaikum! Hi, I'm GenZBot. This is the place for cool discussions about modern Muslim lifestyles, self-improvement, and how to stay steadfast amidst world trends. Let's start talking, Buddy!",
-          Muallaf: "Assalamu'alaikum, welcome to the big Islamic family! I am MuallafBot, your learning companion for understanding the basics of faith, purification, prayer, and early guidance with patience. Feel free to ask anything."
+          Muallaf: "Assalamu'alaikum, welcome to the big Islamic family! I am MuallafBot, your learning companion for understanding the basics of faith, purification, prayer, and early guidance with patience. Feel free to ask anything.",
+          Kids: "Hi there, little friends! Assalamu'alaikum! I'm KidsBot, your fun buddy for learning about Islam. 🌈 Ask me anything about the beauty of Islam, amazing stories of the Prophets, or how to be a good kid loved by Allah. I have many exciting stories for you! ✨"
         };
         return welcomes[persona] || "Assalamu'alaikum! I am SmartFaith AI, how can I help you today?";
       }
