@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY as string });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.GEMINI_API_KEY as string });
 
 export type PersonaType = 'Fiqh' | 'Sirah' | 'Tarikh' | 'Nusantara' | 'Muamalah' | 'GenZ' | 'Muallaf' | 'Kids' | 'General';
 
