@@ -1,6 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.GEMINI_API_KEY as string });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY as string });
 
 export type PersonaType = 'Fiqh' | 'Sirah' | 'Tarikh' | 'Nusantara' | 'Muamalah' | 'GenZ' | 'Muallaf' | 'Kids' | 'General';
 
@@ -97,7 +97,7 @@ Tambahan Khusus: ${tambahan || '-'}
 export async function analyzeHafalan(audioBase64: string, surah: string, range: string) {
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-1.5-flash", // Use 1.5 flash for audio processing if available, or just flash
+      model: "gemini-3-flash-preview",
       contents: [
         {
           role: 'user',
